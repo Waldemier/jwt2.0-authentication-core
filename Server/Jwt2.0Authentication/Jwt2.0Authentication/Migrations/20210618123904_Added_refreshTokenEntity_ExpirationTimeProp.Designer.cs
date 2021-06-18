@@ -4,14 +4,16 @@ using Jwt2._0Authentication.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Jwt2._0Authentication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210618123904_Added_refreshTokenEntity_ExpirationTimeProp")]
+    partial class Added_refreshTokenEntity_ExpirationTimeProp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,8 +28,8 @@ namespace Jwt2._0Authentication.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("ExpiryTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("ExpiryTime")
+                        .HasColumnType("time");
 
                     b.Property<string>("Token")
                         .HasColumnType("nvarchar(max)");
@@ -71,7 +73,7 @@ namespace Jwt2._0Authentication.Migrations
                             Id = 1,
                             Email = "admin@gmail.com",
                             Name = "Admin",
-                            Password = "$2a$11$f1YxBqG7ynCbO/uY789vtu65cGXOhI4LHurbPm20eDaL7CjbXCo1q",
+                            Password = "$2a$11$aRP0Iatsc2ADBEO8Fn4yM.txgtiwsMfJR8C/VfNZj2KcsbYEntSTu",
                             Role = 0
                         },
                         new
@@ -79,7 +81,7 @@ namespace Jwt2._0Authentication.Migrations
                             Id = 2,
                             Email = "test1@gmail.com",
                             Name = "Dominik",
-                            Password = "$2a$11$ttJP.KAacKE2GXaXXLw6VOS6vjVOtjeo181tYMFJ5.IPhD9QNCGO6",
+                            Password = "$2a$11$DYbYw2x0/TU9iZQiCnHTeuvPvg1yXMHbDbeW0mnFjZYP0wkLjFN.6",
                             Role = 1
                         },
                         new
@@ -87,7 +89,7 @@ namespace Jwt2._0Authentication.Migrations
                             Id = 3,
                             Email = "test2@gmail.com",
                             Name = "Vladislav",
-                            Password = "$2a$11$PFmLQ8SG0LpGaS4z8yECYe2UKWY1Lijal9wdmgmNQAQvEG.uMTgo2",
+                            Password = "$2a$11$CnnEoiLCErWTDSql0WtI.u8Z4hk9mERScVyBK5C8hY72XgT8r3ITu",
                             Role = 2
                         });
                 });

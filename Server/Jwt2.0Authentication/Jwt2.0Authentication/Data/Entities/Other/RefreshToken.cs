@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,5 +13,7 @@ namespace Jwt2._0Authentication.Data.Entities.Other
         public int UserId { get; set; }
         [ForeignKey(nameof(UserId))]
         public User User { get; set; }
+        
+        public DateTime ExpiryTime { get; set; }
     }
 }

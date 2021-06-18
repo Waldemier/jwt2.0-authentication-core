@@ -50,17 +50,19 @@ namespace Jwt2._0Authentication
 
             services.AddAuthentication(options =>
             {
+                // Informs the application that authentication will be based on tokens
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
                 options.SaveToken = true;
+                options.RequireHttpsMetadata = true; // if false then SSL while requesting not used
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig.SecurityKey)),
                     ValidateIssuerSigningKey = true,
-                    ValidateAudience = false,
-                    ValidateIssuer = false,
+                    ValidateAudience = false, // потребитель
+                    ValidateIssuer = false, // издатель
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.Zero
                 };

@@ -72,6 +72,7 @@ namespace Jwt2._0Authentication.Controllers
         }
         
         [HttpPost("refresh")]
+        [AllowAnonymous]
         public IActionResult Refresh([FromBody] RefreshCredentials refreshCredentials)
         {
             var tokens = this._jwtService.Refresh(refreshCredentials);

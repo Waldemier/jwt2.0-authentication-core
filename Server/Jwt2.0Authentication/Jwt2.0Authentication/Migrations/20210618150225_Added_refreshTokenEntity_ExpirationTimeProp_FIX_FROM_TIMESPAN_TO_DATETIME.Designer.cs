@@ -4,14 +4,16 @@ using Jwt2._0Authentication.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Jwt2._0Authentication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210618150225_Added_refreshTokenEntity_ExpirationTimeProp_FIX_FROM_TIMESPAN_TO_DATETIME")]
+    partial class Added_refreshTokenEntity_ExpirationTimeProp_FIX_FROM_TIMESPAN_TO_DATETIME
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
