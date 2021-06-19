@@ -58,10 +58,12 @@ namespace Jwt2._0Authentication.Security
                 this._context.SaveChanges();
             }
 
-            return new AuthenticatedResponse
+
+            return new AuthenticatedResponse 
             {
                 JwtToken = jwtToken, 
-                RefreshToken = refreshToken
+                RefreshToken = refreshToken,
+                RefreshExpiryTime = DateTime.UtcNow.AddDays(int.Parse(this._configuration["RefreshTokenExpirationDays"])) // The same as in db refresh token expiry time
             };
         }
         
@@ -89,7 +91,8 @@ namespace Jwt2._0Authentication.Security
             return new AuthenticatedResponse
             {
                 JwtToken = jwtToken, 
-                RefreshToken = refreshToken
+                RefreshToken = refreshToken,
+                RefreshExpiryTime = DateTime.UtcNow.AddDays(int.Parse(this._configuration["RefreshTokenExpirationDays"])) // The same as in db refresh token expiry time
             };
         }
         
